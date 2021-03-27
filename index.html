@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>yilia</title>
+  <title>blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="yilia">
+<meta property="og:title" content="blog">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="yilia">
+<meta property="og:site_name" content="blog">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="yilia" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -151,6 +151,114 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-my-first-blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/27/my-first-blog/">建站过程</a>
+    </h1>
+  
+
+        
+        <a href="/2021/03/27/my-first-blog/" class="archive-article-date">
+  	<time datetime="2021-03-27T13:15:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近感觉有很多想法没记录下来最后都想不起来了，以及总是不能坚持学习一件事情，故花了一点时间按照网上教程建立了这个小型的个人博客。一是记录一下，二是作为学习笔记存放，三是借助建站了解一下网页有关知识。</p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Windows 10</span><br><span class="line">node.js@14.16.0</span><br><span class="line">npm@6.14.11</span><br><span class="line">git for windows@2.31.1</span><br><span class="line">hexo@5.4.0</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装git-for-windows"><a href="#安装git-for-windows" class="headerlink" title="安装git for windows"></a>安装git for windows</h3><p>百度直接搜<a target="_blank" rel="noopener" href="https://gitforwindows.org/">git for windows官网</a>，进去直接download，一路next，默认编辑器vscode就行,安装完成之后需设置用户名和电子邮箱，用下面两行命令就行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;xxx&quot;</span><br><span class="line">git config --global user.email &quot;xxx@xxx.com&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h3><p><a target="_blank" rel="noopener" href="https://nodejs.org/en/">nodejs官网</a>,进去下载稳定版(LTS)，安装一路next，是否安装配套依赖的时候勾上就行（不勾应该也可以，就是一堆python什么的），安装完了用cmd看看node和npm版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<h2 id="创建github仓库"><a href="#创建github仓库" class="headerlink" title="创建github仓库"></a>创建github仓库</h2><p>创建仓库挺简单的，只要注意仓库名创建为<code>xxx.github.io</code>即可，xxx为GitHub用户名即可，创建完毕后博客访问就可以用 <a target="_blank" rel="noopener" href="http://xxx.github.io/">http://xxx.github.io</a> 了。</p>
+<h2 id="配置SSH-key"><a href="#配置SSH-key" class="headerlink" title="配置SSH key"></a>配置SSH key</h2><h3 id="获取SSH-key"><a href="#获取SSH-key" class="headerlink" title="获取SSH key"></a>获取SSH key</h3><p>首先用git bash执行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>显示No such file or directory则说明电脑里没有SSH，用下面的命令创建SSH:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;邮件地址&quot;</span><br></pre></td></tr></table></figure>
+<p>连续三次回车（不设置密钥），会生成两个文件，路径会显示在git上，打开那个目录用记事本打开<code>id_rsa.pub</code>文件复制全部内容到github-&gt;setting-&gt;SSh and GPG keys-&gt;New SSH key-&gt;key即可</p>
+<h3 id="测试SSH-key配置是否成功"><a href="#测试SSH-key配置是否成功" class="headerlink" title="测试SSH key配置是否成功"></a>测试SSH key配置是否成功</h3><p>git输入:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>显示<code>Are you sure you want to continue connecting(yes/no)</code>输入yes，看到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi xxx! You’ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+<p>表示SSH配置成功。</p>
+<h1 id="配置hexo"><a href="#配置hexo" class="headerlink" title="配置hexo"></a>配置hexo</h1><h2 id="hexo官网"><a href="#hexo官网" class="headerlink" title="hexo官网"></a><a target="_blank" rel="noopener" href="https://hexo.io/">hexo官网</a></h2><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博文目录和相关链接信息，相信谁都会疯掉，所以hexo所做的就是将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>自己在电脑里新建一个文件夹（名字无所谓），这个文件夹作为存放网站代码的地方。新建完之后将git工作目录切换到这个文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;e&#x2F;code&#x2F;hexo&#x2F;</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<p>hexo会自动下载一些文件到这个目录，如果电脑上有网络代理，这时可能会出现问题，这时需要到Windows设置里看网络代理的端口，然后在git里输入如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy localhost:xxxx (xxxx为端口号)</span><br></pre></td></tr></table></figure>
+<p>然后再init即可，记得执行完毕之后取消git的代理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br></pre></td></tr></table></figure>
+<p>然后就可以开始生成博客的静态页面了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g # 生成</span><br><span class="line">hexo s #启动本地预览服务</span><br></pre></td></tr></table></figure>
+<p>打开浏览器访问<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a>即可看到生成的博客页面</p>
+<h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><p><a target="_blank" rel="noopener" href="https://hexo.io/themes/">官方主题网址</a><br>首先下载主题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;e&#x2F;code&#x2F;hexo&#x2F;</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;litten&#x2F;hexo-theme-yilia.git themes&#x2F;yilia</span><br></pre></td></tr></table></figure>
+<p>下载完毕后修改<code>_config.yml</code>中的<code>theme:landscape</code>为<code>theme:yilia</code>，修改完毕后重新生成一遍博客页面即可。</p>
+<h1 id="上传到GitHub"><a href="#上传到GitHub" class="headerlink" title="上传到GitHub"></a>上传到GitHub</h1><p>首先确定SSH key配置成功，然后修改<code>_config.yml</code>中的deploy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:xxx&#x2F;xxx.github.io.git # 你仓库的SSH地址</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>然后用git bush输入hexo d即可上传到Github</p>
+<h1 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h1><p><a target="_blank" rel="noopener" href="http://blog.haoji.me/build-blog-website-by-hexo-github.html?from=xa">使用hexo+github搭建免费个人博客详细教程</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/Gfeiyv/article/details/104570075/">已解决！hexo+github搭建个人博客安装hexo时，hexo init初始化一直报错</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/51f7b43c162e">体验hexo+github搭建免费个人博客</a><br><a target="_blank" rel="noopener" href="https://hexo.io/docs/">hexo官方文档</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闲聊</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/27/my-first-blog/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -318,6 +426,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">闲聊</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
