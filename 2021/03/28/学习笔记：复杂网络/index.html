@@ -18,7 +18,7 @@
   <meta name="author" content="Li">
   <meta name="keywords" content="">
   
-  <title>自适应辛普森公式 - blog</title>
+  <title>学习笔记：复杂网络 - blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -165,7 +165,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="自适应辛普森公式">
+            <span class="h2" id="subtitle" title="学习笔记：复杂网络">
               
             </span>
 
@@ -175,8 +175,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-03-28 15:11" pubdate>
-        2021年3月28日 下午
+      <time datetime="2021-03-28 18:32" pubdate>
+        2021年3月28日 晚上
       </time>
     </span>
   
@@ -187,7 +187,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      175 字
+      475 字
     </span>
   
 
@@ -197,7 +197,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      4
        分钟
     </span>
   
@@ -227,11 +227,23 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">自适应辛普森公式</h1>
+            <h1 style="display: none">学习笔记：复杂网络</h1>
             
             <div class="markdown-body">
-              <p>按照书上自适应辛普森公式的计算流程写了一个matlab程序（实际是作业要用这个公式实在不想算了）</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs C">%SIMPSON 自适应辛普森公式求积分<br>% up为积分上限，down为积分下限，eps为误差限<br>i = <span class="hljs-number">0</span>;<br>n = <span class="hljs-number">2</span> ^ i;<br>s = <span class="hljs-number">0</span>;<br>h = (up - down);<br>s1 = h / <span class="hljs-number">6</span> * (f(up) + <span class="hljs-number">4</span> * f((up + down)/<span class="hljs-number">2</span>) + f(down));<br>output = zeros(<span class="hljs-number">100</span>,<span class="hljs-number">5</span>);<br><span class="hljs-keyword">while</span> n &gt; <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> j = <span class="hljs-number">0</span>: <span class="hljs-number">1</span>: n - <span class="hljs-number">1</span><br>        s = s + (<span class="hljs-number">2</span> * f( down +(j + <span class="hljs-number">1</span>/<span class="hljs-number">4</span>) * h) - f( down + ( j + <span class="hljs-number">1</span>/<span class="hljs-number">2</span> ) * h) + <span class="hljs-number">2</span>* f(down + (j + <span class="hljs-number">3</span>/<span class="hljs-number">4</span> )* h));<br>    end<br>    s2 = <span class="hljs-number">1</span>/<span class="hljs-number">2</span> * s1 + h / <span class="hljs-number">6</span> * s;<br>    output(i + <span class="hljs-number">1</span>, :) = [n h s1 s2 s];<br>    <span class="hljs-keyword">if</span> eps &gt;= <span class="hljs-built_in">abs</span>(s2 - s1) <br>        <span class="hljs-keyword">break</span><br>    end<br>    i = i + <span class="hljs-number">1</span>;<br>    n = <span class="hljs-number">2</span> ^ i;<br>    h = h / <span class="hljs-number">2</span>;<br>    s1 = s2; <br>    s = <span class="hljs-number">0</span>;<br>end<br>end<br><br>function [value] = f(x)<br>    value = <span class="hljs-number">1</span>/(<span class="hljs-number">1</span> + x ^ <span class="hljs-number">2</span>);<br>end<br></code></pre></td></tr></table></figure>
+              <h1 id="社团发现算法"><a class="markdownIt-Anchor" href="#社团发现算法"></a> 社团发现算法</h1>
+<h3 id="基于聚类粒化的社团发现算法"><a class="markdownIt-Anchor" href="#基于聚类粒化的社团发现算法"></a> 基于聚类粒化的社团发现算法</h3>
+<p>算法分为几步：首先将每个节点粒化，即将其本身和其直接连接的节点看作一个粒子，然后将邻接的粒子进行邻接粒化，即进行粒子合并其中粒子是否邻接可用下图的邻接粒化系数判断<br>
+<img src="/2021/03/28/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/%E9%82%BB%E6%8E%A5%E7%B2%92%E5%8C%96%E7%B3%BB%E6%95%B0.png" srcset="/img/loading.gif" lazyload alt><br>
+存在一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span>，当邻接粒化系数大于 时可视为需要进行邻接粒化， 取值在0.3至0.6之间。同理，当粒子集合中任意两个粒子的邻接粒化系数均小于 时即社团划分成功， 的确定需配合模块度最大来决定，若存在节点同时存在于两个社团则采用邻居投票法来决定其归属于那个社团，即看其邻居中属于哪个社团的节点最多。</p>
+<h3 id="lpa标签传播算法"><a class="markdownIt-Anchor" href="#lpa标签传播算法"></a> LPA标签传播算法</h3>
+<p>初始化赋予每个节点一个社团标签，然后不断进行传播和收敛判断的迭代，传播：遍历所有节点，对节点所邻接的节点进行标签统计，将自身更新为标签权重最大的标签。收敛判断：遍历所有节点，对节点所邻接的节点进行标签统计，判断自身是否为标签权重最大的节点，若是则结束，这里需设置一个最大迭代次数。</p>
+<h3 id="gn算法"><a class="markdownIt-Anchor" href="#gn算法"></a> GN算法</h3>
+<p>是一种分裂方法。其基本思想是不断的从网络中移除介数最大的边。边介数定义为网络中经过每条边的最短路径的数目。具体算法如下：<br>
+①计算网络中所有边的介数。<br>
+②移除介数最高的边。<br>
+③重新计算所有受影响的边的介数。<br>
+④重复步骤②，直到每个节点就是一个退化社团为止。</p>
+
             </div>
             <hr>
             <div>
@@ -241,7 +253,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/matlab/">matlab</a>
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
                     
                   </div>
                 
@@ -258,18 +270,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/03/28/pic/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">pic</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/03/27/my-first-blog/">
-                        <span class="hidden-mobile">建站过程</span>
+                      <a href="/2021/03/28/pic/">
+                        <span class="hidden-mobile">pic</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -427,6 +433,13 @@
 
 
 
+
+  
+
+  
+    <!-- KaTeX -->
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" />
+  
 
 
 

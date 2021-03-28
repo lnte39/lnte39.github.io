@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>学习笔记：复杂网络</title>
+    <link href="/2021/03/28/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/"/>
+    <url>/2021/03/28/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/</url>
+    
+    <content type="html"><![CDATA[<h1 id="社团发现算法"><a class="markdownIt-Anchor" href="#社团发现算法"></a> 社团发现算法</h1><h3 id="基于聚类粒化的社团发现算法"><a class="markdownIt-Anchor" href="#基于聚类粒化的社团发现算法"></a> 基于聚类粒化的社团发现算法</h3><p>算法分为几步：首先将每个节点粒化，即将其本身和其直接连接的节点看作一个粒子，然后将邻接的粒子进行邻接粒化，即进行粒子合并其中粒子是否邻接可用下图的邻接粒化系数判断<br><img src="/2021/03/28/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/%E9%82%BB%E6%8E%A5%E7%B2%92%E5%8C%96%E7%B3%BB%E6%95%B0.png" alt><br>存在一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">λ</span></span></span></span>，当邻接粒化系数大于 时可视为需要进行邻接粒化， 取值在0.3至0.6之间。同理，当粒子集合中任意两个粒子的邻接粒化系数均小于 时即社团划分成功， 的确定需配合模块度最大来决定，若存在节点同时存在于两个社团则采用邻居投票法来决定其归属于那个社团，即看其邻居中属于哪个社团的节点最多。</p><h3 id="lpa标签传播算法"><a class="markdownIt-Anchor" href="#lpa标签传播算法"></a> LPA标签传播算法</h3><p>初始化赋予每个节点一个社团标签，然后不断进行传播和收敛判断的迭代，传播：遍历所有节点，对节点所邻接的节点进行标签统计，将自身更新为标签权重最大的标签。收敛判断：遍历所有节点，对节点所邻接的节点进行标签统计，判断自身是否为标签权重最大的节点，若是则结束，这里需设置一个最大迭代次数。</p><h3 id="gn算法"><a class="markdownIt-Anchor" href="#gn算法"></a> GN算法</h3><p>是一种分裂方法。其基本思想是不断的从网络中移除介数最大的边。边介数定义为网络中经过每条边的最短路径的数目。具体算法如下：<br>①计算网络中所有边的介数。<br>②移除介数最高的边。<br>③重新计算所有受影响的边的介数。<br>④重复步骤②，直到每个节点就是一个退化社团为止。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>学习</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>pic</title>
+    <link href="/2021/03/28/pic/"/>
+    <url>/2021/03/28/pic/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>自适应辛普森公式</title>
+    <link href="/2021/03/28/%E8%87%AA%E9%80%82%E5%BA%94%E8%BE%9B%E6%99%AE%E6%A3%AE%E5%85%AC%E5%BC%8F/"/>
+    <url>/2021/03/28/%E8%87%AA%E9%80%82%E5%BA%94%E8%BE%9B%E6%99%AE%E6%A3%AE%E5%85%AC%E5%BC%8F/</url>
+    
+    <content type="html"><![CDATA[<p>按照书上自适应辛普森公式的计算流程写了一个matlab程序（实际是作业要用这个公式实在不想算了）</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs C">%SIMPSON 自适应辛普森公式求积分<br>% up为积分上限，down为积分下限，eps为误差限<br>i = <span class="hljs-number">0</span>;<br>n = <span class="hljs-number">2</span> ^ i;<br>s = <span class="hljs-number">0</span>;<br>h = (up - down);<br>s1 = h / <span class="hljs-number">6</span> * (f(up) + <span class="hljs-number">4</span> * f((up + down)/<span class="hljs-number">2</span>) + f(down));<br>output = zeros(<span class="hljs-number">100</span>,<span class="hljs-number">5</span>);<br><span class="hljs-keyword">while</span> n &gt; <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> j = <span class="hljs-number">0</span>: <span class="hljs-number">1</span>: n - <span class="hljs-number">1</span><br>        s = s + (<span class="hljs-number">2</span> * f( down +(j + <span class="hljs-number">1</span>/<span class="hljs-number">4</span>) * h) - f( down + ( j + <span class="hljs-number">1</span>/<span class="hljs-number">2</span> ) * h) + <span class="hljs-number">2</span>* f(down + (j + <span class="hljs-number">3</span>/<span class="hljs-number">4</span> )* h));<br>    end<br>    s2 = <span class="hljs-number">1</span>/<span class="hljs-number">2</span> * s1 + h / <span class="hljs-number">6</span> * s;<br>    output(i + <span class="hljs-number">1</span>, :) = [n h s1 s2 s];<br>    <span class="hljs-keyword">if</span> eps &gt;= <span class="hljs-built_in">abs</span>(s2 - s1) <br>        <span class="hljs-keyword">break</span><br>    end<br>    i = i + <span class="hljs-number">1</span>;<br>    n = <span class="hljs-number">2</span> ^ i;<br>    h = h / <span class="hljs-number">2</span>;<br>    s1 = s2; <br>    s = <span class="hljs-number">0</span>;<br>end<br>end<br><br>function [value] = f(x)<br>    value = <span class="hljs-number">1</span>/(<span class="hljs-number">1</span> + x ^ <span class="hljs-number">2</span>);<br>end<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>matlab</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>建站过程</title>
+    <link href="/2021/03/27/my-first-blog/"/>
+    <url>/2021/03/27/my-first-blog/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1><p>最近感觉有很多想法没记录下来最后都想不起来了，以及总是不能坚持学习一件事情，故花了一点时间按照网上教程建立了这个小型的个人博客。一是记录一下，二是作为学习笔记存放，三是借助建站了解一下网页有关知识。</p><h1 id="准备工作"><a class="markdownIt-Anchor" href="#准备工作"></a> 准备工作</h1><h2 id="安装环境"><a class="markdownIt-Anchor" href="#安装环境"></a> 安装环境</h2><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Windows</span> <span class="hljs-number">10</span><br><span class="hljs-attribute">node</span>.js@<span class="hljs-number">14</span>.<span class="hljs-number">16</span>.<span class="hljs-number">0</span><br><span class="hljs-attribute">npm</span>@<span class="hljs-number">6</span>.<span class="hljs-number">14</span>.<span class="hljs-number">11</span><br><span class="hljs-attribute">git</span> for windows@<span class="hljs-number">2</span>.<span class="hljs-number">31</span>.<span class="hljs-number">1</span><br><span class="hljs-attribute">hexo</span>@<span class="hljs-number">5</span>.<span class="hljs-number">4</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure><h3 id="安装git-for-windows"><a class="markdownIt-Anchor" href="#安装git-for-windows"></a> 安装git for windows</h3><p>百度直接搜<a href="https://gitforwindows.org/">git for windows官网</a>，进去直接download，一路next，默认编辑器vscode就行,安装完成之后需设置用户名和电子邮箱，用下面两行命令就行。</p><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs verilog">git <span class="hljs-keyword">config</span> --<span class="hljs-keyword">global</span> user<span class="hljs-variable">.name</span> <span class="hljs-string">&quot;xxx&quot;</span><br>git <span class="hljs-keyword">config</span> --<span class="hljs-keyword">global</span> user<span class="hljs-variable">.email</span> <span class="hljs-string">&quot;xxx@xxx.com&quot;</span><br></code></pre></td></tr></table></figure><h3 id="安装nodejs"><a class="markdownIt-Anchor" href="#安装nodejs"></a> 安装node.js</h3><p><a href="https://nodejs.org/en/">nodejs官网</a>,进去下载稳定版(LTS)，安装一路next，是否安装配套依赖的时候勾上就行（不勾应该也可以，就是一堆python什么的），安装完了用cmd看看node和npm版本</p><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs crmsh"><span class="hljs-keyword">node</span> <span class="hljs-title">-v</span><br>npm -v<br></code></pre></td></tr></table></figure><h2 id="创建github仓库"><a class="markdownIt-Anchor" href="#创建github仓库"></a> 创建github仓库</h2><p>创建仓库挺简单的，只要注意仓库名创建为<code>xxx.github.io</code>即可，xxx为GitHub用户名即可，创建完毕后博客访问就可以用 <a href="http://xxx.github.io">http://xxx.github.io</a> 了。</p><h2 id="配置ssh-key"><a class="markdownIt-Anchor" href="#配置ssh-key"></a> 配置SSH key</h2><h3 id="获取ssh-key"><a class="markdownIt-Anchor" href="#获取ssh-key"></a> 获取SSH key</h3><p>首先用git bash执行:</p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">ssh -T <span class="hljs-symbol">git@</span>github.com<br></code></pre></td></tr></table></figure><p>显示No such file or directory则说明电脑里没有SSH，用下面的命令创建SSH:</p><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">ssh-keygen -<span class="hljs-built_in">t</span> rsa -C <span class="hljs-string">&quot;邮件地址&quot;</span><br></code></pre></td></tr></table></figure><p>连续三次回车（不设置密钥），会生成两个文件，路径会显示在git上，打开那个目录用记事本打开<code>id_rsa.pub</code>文件复制全部内容到github-&gt;setting-&gt;SSh and GPG keys-&gt;New SSH key-&gt;key即可</p><h3 id="测试ssh-key配置是否成功"><a class="markdownIt-Anchor" href="#测试ssh-key配置是否成功"></a> 测试SSH key配置是否成功</h3><p>git输入:</p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">ssh -T <span class="hljs-symbol">git@</span>github.com<br></code></pre></td></tr></table></figure><p>显示<code>Are you sure you want to continue connecting(yes/no)</code>输入yes，看到</p><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">Hi xxx! You’ve successfully authenticated, <span class="hljs-keyword">but</span> GitHub <span class="hljs-keyword">does</span> <span class="hljs-keyword">not</span> provide shell access.<br></code></pre></td></tr></table></figure><p>表示SSH配置成功。</p><h1 id="配置hexo"><a class="markdownIt-Anchor" href="#配置hexo"></a> 配置hexo</h1><h2 id="hexo官网"><a class="markdownIt-Anchor" href="#hexo官网"></a> <a href="https://hexo.io/">hexo官网</a></h2><h2 id="原理"><a class="markdownIt-Anchor" href="#原理"></a> 原理</h2><p>由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博文目录和相关链接信息，相信谁都会疯掉，所以hexo所做的就是将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github。</p><h2 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h2><p>自己在电脑里新建一个文件夹（名字无所谓），这个文件夹作为存放网站代码的地方。新建完之后将git工作目录切换到这个文件夹</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">cd <span class="hljs-regexp">/e/</span>code<span class="hljs-regexp">/hexo/</span><br>hexo init<br></code></pre></td></tr></table></figure><p>hexo会自动下载一些文件到这个目录，如果电脑上有网络代理，这时可能会出现问题，这时需要到Windows设置里看网络代理的端口，然后在git里输入如下命令：</p><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua">git <span class="hljs-built_in">config</span> <span class="hljs-comment">--global http.proxy localhost:xxxx (xxxx为端口号)</span><br></code></pre></td></tr></table></figure><p>然后再init即可，记得执行完毕之后取消git的代理：</p><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tcl">git config --<span class="hljs-keyword">global</span> --<span class="hljs-keyword">unset</span> <span class="hljs-keyword">http</span>.proxy<br></code></pre></td></tr></table></figure><p>然后就可以开始生成博客的静态页面了</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">hexo</span> g <span class="hljs-comment"># 生成</span><br>hexo s <span class="hljs-comment">#启动本地预览服务</span><br></code></pre></td></tr></table></figure><p>打开浏览器访问<a href="http://localhost:4000">http://localhost:4000</a>即可看到生成的博客页面</p><h2 id="修改主题"><a class="markdownIt-Anchor" href="#修改主题"></a> 修改主题</h2><p><a href="https://hexo.io/themes/">官方主题网址</a><br>首先下载主题：</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">cd <span class="hljs-regexp">/e/</span>code<span class="hljs-regexp">/hexo/</span><br>git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/litten/</span>hexo-theme-yilia.git themes/yilia<br></code></pre></td></tr></table></figure><p>下载完毕后修改<code>_config.yml</code>中的<code>theme:landscape</code>为<code>theme:yilia</code>，修改完毕后重新生成一遍博客页面即可。</p><h1 id="上传到github"><a class="markdownIt-Anchor" href="#上传到github"></a> 上传到GitHub</h1><p>首先确定SSH key配置成功，然后修改<code>_config.yml</code>中的deploy</p><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">deploy:</span><br><span class="hljs-symbol">  type:</span> git<br><span class="hljs-symbol">  repository:</span> git@github.com:xxx/xxx.github.io.git <span class="hljs-meta"># 你仓库的SSH地址</span><br><span class="hljs-symbol">  branch:</span> master<br></code></pre></td></tr></table></figure><p>然后用git bush输入hexo d即可上传到Github</p><h1 id="相关链接"><a class="markdownIt-Anchor" href="#相关链接"></a> 相关链接</h1><p><a href="http://blog.haoji.me/build-blog-website-by-hexo-github.html?from=xa">使用hexo+github搭建免费个人博客详细教程</a><br><a href="https://blog.csdn.net/Gfeiyv/article/details/104570075/">已解决！hexo+github搭建个人博客安装hexo时，hexo init初始化一直报错</a><br><a href="https://www.jianshu.com/p/51f7b43c162e">体验hexo+github搭建免费个人博客</a><br><a href="https://hexo.io/docs/">hexo官方文档</a></p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>闲聊</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2021/03/27/hello-world/"/>
+    <url>/2021/03/27/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="quick-start"><a class="markdownIt-Anchor" href="#quick-start"></a> Quick Start</h2><h3 id="create-a-new-post"><a class="markdownIt-Anchor" href="#create-a-new-post"></a> Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="run-server"><a class="markdownIt-Anchor" href="#run-server"></a> Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="generate-static-files"><a class="markdownIt-Anchor" href="#generate-static-files"></a> Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="deploy-to-remote-sites"><a class="markdownIt-Anchor" href="#deploy-to-remote-sites"></a> Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
