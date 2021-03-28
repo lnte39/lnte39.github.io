@@ -152,6 +152,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-自适应辛普森公式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/28/%E8%87%AA%E9%80%82%E5%BA%94%E8%BE%9B%E6%99%AE%E6%A3%AE%E5%85%AC%E5%BC%8F/">自适应辛普森公式</a>
+    </h1>
+  
+
+        
+        <a href="/2021/03/28/%E8%87%AA%E9%80%82%E5%BA%94%E8%BE%9B%E6%99%AE%E6%A3%AE%E5%85%AC%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2021-03-28T07:11:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">%SIMPSON 自适应辛普森公式求积分</span><br><span class="line">% up为积分上限，down为积分下限，eps为误差限</span><br><span class="line">i = <span class="number">0</span>;</span><br><span class="line">n = <span class="number">2</span> ^ i;</span><br><span class="line">s = <span class="number">0</span>;</span><br><span class="line">h = (up - down);</span><br><span class="line">s1 = h / <span class="number">6</span> * (f(up) + <span class="number">4</span> * f((up + down)/<span class="number">2</span>) + f(down));</span><br><span class="line">output = zeros(<span class="number">100</span>,<span class="number">5</span>);</span><br><span class="line"><span class="keyword">while</span> n &gt; <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> j = <span class="number">0</span>: <span class="number">1</span>: n - <span class="number">1</span></span><br><span class="line">        s = s + (<span class="number">2</span> * f( down +(j + <span class="number">1</span>/<span class="number">4</span>) * h) - f( down + ( j + <span class="number">1</span>/<span class="number">2</span> ) * h) + <span class="number">2</span>* f(down + (j + <span class="number">3</span>/<span class="number">4</span> )* h));</span><br><span class="line">    end</span><br><span class="line">    s2 = <span class="number">1</span>/<span class="number">2</span> * s1 + h / <span class="number">6</span> * s;</span><br><span class="line">    output(i + <span class="number">1</span>, :) = [n h s1 s2 s];</span><br><span class="line">    <span class="keyword">if</span> eps &gt;= <span class="built_in">abs</span>(s2 - s1) </span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    end</span><br><span class="line">    i = i + <span class="number">1</span>;</span><br><span class="line">    n = <span class="number">2</span> ^ i;</span><br><span class="line">    h = h / <span class="number">2</span>;</span><br><span class="line">    s1 = s2; </span><br><span class="line">    s = <span class="number">0</span>;</span><br><span class="line">end</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">function [value] = f(x)</span><br><span class="line">    value = <span class="number">1</span>/(<span class="number">1</span> + x ^ <span class="number">2</span>);</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">matlab</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/28/%E8%87%AA%E9%80%82%E5%BA%94%E8%BE%9B%E6%99%AE%E6%A3%AE%E5%85%AC%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-my-first-blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -429,6 +502,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闲聊</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">matlab</a>
               </li>
             
             <div class="clearfix"></div>
