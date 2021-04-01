@@ -199,7 +199,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      794 字
+      1.1k 字
     </span>
   
 
@@ -209,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      13
        分钟
     </span>
   
@@ -243,7 +243,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：6 分钟前
+                  本文最后更新于：1 分钟前
                 
               </p>
             
@@ -278,8 +278,10 @@ define函数的第三个bool参数可以使常量名有大小写区分<br>
 <p><img src="/2021/03/31/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9APHP/tobool.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br>var_dump((<span class="hljs-keyword">bool</span>) <span class="hljs-string">&quot;&quot;</span>);        <span class="hljs-comment">// bool(false)</span><br>var_dump((<span class="hljs-keyword">bool</span>) <span class="hljs-number">1</span>);         <span class="hljs-comment">// bool(true)</span><br>var_dump((<span class="hljs-keyword">bool</span>) -<span class="hljs-number">2</span>);        <span class="hljs-comment">// bool(true)</span><br>var_dump((<span class="hljs-keyword">bool</span>) <span class="hljs-string">&quot;foo&quot;</span>);     <span class="hljs-comment">// bool(true)</span><br>var_dump((<span class="hljs-keyword">bool</span>) <span class="hljs-number">2.3e5</span>);     <span class="hljs-comment">// bool(true)</span><br>var_dump((<span class="hljs-keyword">bool</span>) <span class="hljs-keyword">array</span>(<span class="hljs-number">12</span>)); <span class="hljs-comment">// bool(true)</span><br>var_dump((<span class="hljs-keyword">bool</span>) <span class="hljs-keyword">array</span>());   <span class="hljs-comment">// bool(false)</span><br>var_dump((<span class="hljs-keyword">bool</span>) <span class="hljs-string">&quot;false&quot;</span>);   <span class="hljs-comment">// bool(true)</span><br><span class="hljs-meta">?&gt;</span><br></code></pre></td></tr></table></figure>
 <h3 id="string-to-value"><a class="markdownIt-Anchor" href="#string-to-value"></a> string to value：</h3>
-<p>1 以字母开头的字符串，永远为0<br>
-2 以数字开头的字符串，取到碰到字符为止</p>
+<ul>
+<li>以字母开头的字符串，永远为0</li>
+<li>以数字开头的字符串，取到碰到字符为止</li>
+</ul>
 <h2 id="数据类型判断"><a class="markdownIt-Anchor" href="#数据类型判断"></a> 数据类型判断</h2>
 <p>is_数据类型(变量名)：返回bool值,使用var_dump()函数查看结果<br>
 gettype(变量名)：返回数据类型的字符串<br>
@@ -296,6 +298,43 @@ isset():判断是否存在<br>
 .=：复合运算，将左右内容连接到一起并赋给左边</p>
 <h3 id="错误抑制符"><a class="markdownIt-Anchor" href="#错误抑制符"></a> 错误抑制符</h3>
 <p>@：在可能出错的表达式前加上即可，作用类似于关闭错误回显</p>
+<h2 id="文件包含"><a class="markdownIt-Anchor" href="#文件包含"></a> 文件包含</h2>
+<h3 id="四种形式"><a class="markdownIt-Anchor" href="#四种形式"></a> 四种形式</h3>
+<p>Include：包含文件<br>
+Include_once：只包含一次文件，系统会自动判断是否已经包含过文件<br>
+Require：与Include相同<br>
+Require_once：与Include_once相同</p>
+<ul>
+<li>被包含的文件是单独编译的，即被包含文件有错误时，代码直到执行到include这一行才会报错。</li>
+<li>include与require的区别：包含不到文件时报错的形式不同，include报错级别较轻，不会阻止代码运行，require会显示fatal error终止代码运行</li>
+</ul>
+<h3 id="文件加载路径"><a class="markdownIt-Anchor" href="#文件加载路径"></a> 文件加载路径</h3>
+<p>绝对路径和相对路径加载的区别：</p>
+<ul>
+<li>绝对路径相对效率偏低，但是相对安全</li>
+<li>相对路径相对效率较高，但是容易出错误</li>
+</ul>
+<h4 id="绝对路径"><a class="markdownIt-Anchor" href="#绝对路径"></a> 绝对路径</h4>
+<ol>
+<li>从磁盘根目录开始</li>
+</ol>
+<ul>
+<li>Windows：盘符/路径/PHP文件</li>
+<li>Linux：/路径/PHP文件</li>
+</ul>
+<ol start="2">
+<li>从网站根目录开始</li>
+</ol>
+<ul>
+<li>/：相对于网站主机名字对应的路径</li>
+</ul>
+<h4 id="相对路径"><a class="markdownIt-Anchor" href="#相对路径"></a> 相对路径</h4>
+<ul>
+<li>.或者./：表示从当前文件夹</li>
+<li>…/：上一级目录</li>
+</ul>
+<h3 id="文件嵌套包含"><a class="markdownIt-Anchor" href="#文件嵌套包含"></a> 文件嵌套包含</h3>
+<p>注意包含时文件的工作目录变化了，使用相对路径要注意，当前目录变成了最外层的文件的工作目录。</p>
 <h2 id="几种系统函数"><a class="markdownIt-Anchor" href="#几种系统函数"></a> 几种系统函数</h2>
 <h3 id="输出有关的函数"><a class="markdownIt-Anchor" href="#输出有关的函数"></a> 输出有关的函数</h3>
 <p>print():类似于echo<br>
