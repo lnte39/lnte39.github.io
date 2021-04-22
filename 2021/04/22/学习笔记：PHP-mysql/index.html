@@ -18,9 +18,25 @@
   <meta name="author" content="Li">
   <meta name="keywords" content="">
   
-  <title>标签 - 学习 - blog</title>
+  <title>学习笔记：PHP-mysql - blog</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -50,7 +66,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -156,22 +172,55 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/1.png') no-repeat center center;
+         style="background: url('/img/2020-11-09%20123534.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.5)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="标签 - 学习">
+            <span class="h2" id="subtitle" title="学习笔记：PHP-mysql">
               
             </span>
 
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-22 08:29" pubdate>
+        2021年4月22日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      403 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
           
         </div>
       </div>
@@ -180,46 +229,126 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 2 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/2021/04/22/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9APHP-mysql/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">学习笔记：PHP-mysql</span>
-      <time style="float: right;">04-22</time>
-    </a>
-  
-    
-    <a href="/2021/03/28/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">学习笔记：复杂网络</span>
-      <time style="float: right;">03-28</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">学习笔记：PHP-mysql</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="数据库分类"><a class="markdownIt-Anchor" href="#数据库分类"></a> 数据库分类</h1>
+<p>基于储存介质：硬盘、内存</p>
+<ul>
+<li>关系型数据库：存储在磁盘中</li>
+<li>非关系性数据库：存储在内存中</li>
+</ul>
+<h1 id="关系型数据库"><a class="markdownIt-Anchor" href="#关系型数据库"></a> 关系型数据库</h1>
+<h2 id="基本概念"><a class="markdownIt-Anchor" href="#基本概念"></a> 基本概念</h2>
+<p>关系数据库是建立在__关系模型__基础上的数据库</p>
+<h3 id="关系模型"><a class="markdownIt-Anchor" href="#关系模型"></a> 关系模型</h3>
+<p>由__关系数据结构__、<strong>关系操作集合</strong>、__关系完整性约束__构成</p>
+<ul>
+<li>关系数据结构：数据的存储方式，是一种二维表的形式存储</li>
+<li>关系操作集合：用来关联和管理对应存储数据的命令，SQL指令</li>
+<li>关系完整性约束：数据内部对应的关联关系，以及数据与数据之间的对应关联关系</li>
+</ul>
+<p>表内约束：对应的具体列只能放对应的数据<br>
+表间约束：自然界各实体都是有这对应的关联关系（外键）</p>
+<h1 id="sql"><a class="markdownIt-Anchor" href="#sql"></a> SQL</h1>
+<h2 id="基本介绍"><a class="markdownIt-Anchor" href="#基本介绍"></a> 基本介绍</h2>
+<p>结构化查询语言Structured Query Language,一种编程语言。</p>
+<h2 id="分类"><a class="markdownIt-Anchor" href="#分类"></a> 分类</h2>
+<h3 id="数据查询语言-dql"><a class="markdownIt-Anchor" href="#数据查询语言-dql"></a> 数据查询语言 DQL</h3>
+<p>专门用于查询数据，包含__SELECT、SHOW、WHERE、HAVING、ORDER BY、GROUP BY__等</p>
+<h3 id="数据操作语言-dml"><a class="markdownIt-Anchor" href="#数据操作语言-dml"></a> 数据操作语言 DML</h3>
+<p>专门运用写数据，包含__INSERT、UPDATE、DELETE__等</p>
+<h3 id="事务处理语言-tpl"><a class="markdownIt-Anchor" href="#事务处理语言-tpl"></a> 事务处理语言 TPL</h3>
+<p>专门用于事务安全处理，包含__TRANSCATION、BEGIN、COMMIT、ROLLBACK__等</p>
+<h3 id="数据控制语言-dcl"><a class="markdownIt-Anchor" href="#数据控制语言-dcl"></a> 数据控制语言 DCL</h3>
+<p>专门用于权限管理，包含__GRANT、REVOKE__</p>
+<h3 id="数据定义语言-ddl"><a class="markdownIt-Anchor" href="#数据定义语言-ddl"></a> 数据定义语言 DDL</h3>
+<p>专门用于结构管理，包含__CREATE、DROP__</p>
+<h1 id="mysql"><a class="markdownIt-Anchor" href="#mysql"></a> MySQL</h1>
+<h2 id="启动和停止mysql服务"><a class="markdownIt-Anchor" href="#启动和停止mysql服务"></a> 启动和停止MySQL服务</h2>
+<p>MySQL具有服务端和客户端</p>
+<p>服务端对应软件：Mysqld.exe</p>
+<h3 id="命令行"><a class="markdownIt-Anchor" href="#命令行"></a> 命令行</h3>
+<ul>
+<li>Net start 服务(mysql)：开启服务</li>
+<li>Net stop 服务(mysql)：关闭服务</li>
+</ul>
 
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/PHP/">PHP</a>
+                    
+                      <a class="hover-with-bg" href="/tags/mysql/">mysql</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/03/31/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9APHP-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
+                        <span class="hidden-mobile">学习笔记：PHP-基本语法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -300,9 +429,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
