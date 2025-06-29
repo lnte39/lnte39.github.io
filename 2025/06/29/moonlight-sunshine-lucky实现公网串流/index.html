@@ -19,34 +19,22 @@
   <meta name="author" content="Lnte">
   <meta name="keywords" content="">
   
-    <meta name="description" content="图转网络">
+    <meta name="description" content="参考 基本思路： ​	局域网串流：Moonlight（客户端）+Sunshine（服务端）​	内网穿透：Lucky动态域名解析+IPv6（Zerotier、TailScale等组网软件也可，无需域名，但体感不稳定）  链接3.1 Moonlight3.1.1 Moonlight iOS砖家版项目地址https:&#x2F;&#x2F;github.com&#x2F;TrueZhuangJia&#x2F;moonlight-ios-Nat">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pic">
-<meta property="og:url" content="http://lnte39.github.io/2025/06/29/pic-1/index.html">
+<meta property="og:title" content="moonlight+sunshine+lucky实现公网串流">
+<meta property="og:url" content="http://lnte39.github.io/2025/06/29/moonlight-sunshine-lucky%E5%AE%9E%E7%8E%B0%E5%85%AC%E7%BD%91%E4%B8%B2%E6%B5%81/index.html">
 <meta property="og:site_name" content="Lnte&#39;blog">
-<meta property="og:description" content="图转网络">
+<meta property="og:description" content="参考 基本思路： ​	局域网串流：Moonlight（客户端）+Sunshine（服务端）​	内网穿透：Lucky动态域名解析+IPv6（Zerotier、TailScale等组网软件也可，无需域名，但体感不稳定）  链接3.1 Moonlight3.1.1 Moonlight iOS砖家版项目地址https:&#x2F;&#x2F;github.com&#x2F;TrueZhuangJia&#x2F;moonlight-ios-Nat">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://lnte39.github.io/img/pic-1/Gk35mbyaYAARqVY.jpg">
-<meta property="og:image" content="http://lnte39.github.io/img/pic-1/Gk1M-ByWgAAsJ8j-17511287724005.jpg">
-<meta property="og:image" content="http://lnte39.github.io/img/pic-1/GkeuP77W0AANjm7.jpg">
-<meta property="og:image" content="http://lnte39.github.io/img/pic-1/GkmU-PubkAI3FiV.jpg">
-<meta property="og:image" content="http://lnte39.github.io/img/pic-1/GkZkOKmXQAAyG74.jpg">
-<meta property="og:image" content="http://lnte39.github.io/img/pic-1/Glfb30vaAAAZ4nD.jpg">
-<meta property="og:image" content="http://lnte39.github.io/img/pic-1/GlhuDGubgAA6O2z.jpg">
-<meta property="og:image" content="http://lnte39.github.io/img/pic-1/GlqFqikbkAAPjox.jpg">
-<meta property="og:image" content="http://lnte39.github.io/img/pic-1/Gk3-f5abYAAJ6A_.jpg">
-<meta property="og:image" content="http://lnte39.github.io/img/pic-1/Gk01dupWUAA7XGu.jpg">
-<meta property="og:image" content="http://lnte39.github.io/img/pic-1/130271925_p0.jpg">
-<meta property="article:published_time" content="2025-06-28T16:37:45.000Z">
-<meta property="article:modified_time" content="2025-06-28T16:40:41.632Z">
+<meta property="article:published_time" content="2025-06-29T14:58:08.000Z">
+<meta property="article:modified_time" content="2025-06-29T15:41:23.580Z">
 <meta property="article:author" content="Lnte">
-<meta property="article:tag" content="图">
+<meta property="article:tag" content="tips，串流，">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://lnte39.github.io/img/pic-1/Gk35mbyaYAARqVY.jpg">
   
   
   
-  <title>pic - Lnte&#39;blog</title>
+  <title>moonlight+sunshine+lucky实现公网串流 - Lnte&#39;blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -212,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="pic"></span>
+            <span id="subtitle" data-typed-text="moonlight+sunshine+lucky实现公网串流"></span>
           
         </div>
 
@@ -223,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-06-29 00:37" pubdate>
-          2025年6月29日 凌晨
+        <time datetime="2025-06-29 22:58" pubdate>
+          2025年6月29日 晚上
         </time>
       </span>
     
@@ -235,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4 字
+          1.2k 字
         
       </span>
     
@@ -246,7 +234,7 @@
         
         
         
-          1 分钟
+          11 分钟
         
       </span>
     
@@ -283,22 +271,32 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">pic</h1>
+            <h1 id="seo-header">moonlight+sunshine+lucky实现公网串流</h1>
             
             
               <div class="markdown-body">
                 
-                <p><img src="/../img/pic-1/Gk35mbyaYAARqVY.jpg" srcset="/img/loading.gif" lazyload alt="Gk35mbyaYAARqVY"></p>
-<p><img src="/../img/pic-1/Gk1M-ByWgAAsJ8j-17511287724005.jpg" srcset="/img/loading.gif" lazyload alt="Gk1M-ByWgAAsJ8j"></p>
-<p><img src="/../img/pic-1/GkeuP77W0AANjm7.jpg" srcset="/img/loading.gif" lazyload alt="GkeuP77W0AANjm7"></p>
-<p><img src="/../img/pic-1/GkmU-PubkAI3FiV.jpg" srcset="/img/loading.gif" lazyload alt="GkmU-PubkAI3FiV"></p>
-<p><img src="/../img/pic-1/GkZkOKmXQAAyG74.jpg" srcset="/img/loading.gif" lazyload alt="GkZkOKmXQAAyG74"></p>
-<p><img src="/../img/pic-1/Glfb30vaAAAZ4nD.jpg" srcset="/img/loading.gif" lazyload alt="Glfb30vaAAAZ4nD"></p>
-<p><img src="/../img/pic-1/GlhuDGubgAA6O2z.jpg" srcset="/img/loading.gif" lazyload alt="GlhuDGubgAA6O2z"></p>
-<p><img src="/../img/pic-1/GlqFqikbkAAPjox.jpg" srcset="/img/loading.gif" lazyload alt="GlqFqikbkAAPjox"></p>
-<p><img src="/../img/pic-1/Gk3-f5abYAAJ6A_.jpg" srcset="/img/loading.gif" lazyload alt="Gk1M-ByWgAAsJ8j"></p>
-<p><img src="/../img/pic-1/Gk01dupWUAA7XGu.jpg" srcset="/img/loading.gif" lazyload alt="Gk01dupWUAA7XGu"><img src="/../img/pic-1/130271925_p0.jpg" srcset="/img/loading.gif" lazyload alt="130271925_p0"></p>
-<p>图转网络</p>
+                <p><a target="_blank" rel="noopener" href="https://www.coolapk.com/feed/62335057?shareKey=ODI2ZWM1Yzc3NWQyNjc5NGFmYTY~&shareUid=3236166&shareFrom=com.coolapk.market_15.0.2">参考</a></p>
+<p><strong>基本思路</strong>：</p>
+<p>​	局域网串流：Moonlight（客户端）+Sunshine（服务端）<br>​	内网穿透：Lucky动态域名解析+IPv6（Zerotier、TailScale等组网软件也可，无需域名，但体感不稳定）</p>
+<blockquote>
+<p><strong>链接</strong><br>3.1 Moonlight<br>3.1.1 Moonlight iOS砖家版项目地址<br><a target="_blank" rel="noopener" href="https://github.com/TrueZhuangJia/moonlight-ios-NativeMultiTouchPassthrough">https://github.com/TrueZhuangJia/moonlight-ios-NativeMultiTouchPassthrough</a><br>3.1.2 Moonlight iOS砖家版下载地址<br>法1：登录外区AppleID后打开下面的链接: <a target="_blank" rel="noopener" href="https://apps.apple.com/us/app/moonlight-zwm/id6590630545">https://apps.apple.com/us/app/moonlight-zwm/id6590630545</a><br>法2：Apple Store搜索并安装TestFlight后打开下面的链接: <a target="_blank" rel="noopener" href="https://testflight.apple.com/join/1JDEKywe">https://testflight.apple.com/join/1JDEKywe</a><br>3.1.3 Moonlight iOS砖家版开发者b站社区支持<br><a target="_blank" rel="noopener" href="https://b23.tv/zrpBXfT">https://b23.tv/zrpBXfT</a><br>3.1.4 Moonlight 安卓威力加强版项目地址<br><a target="_blank" rel="noopener" href="https://github.com/qiin2333/moonlight-android">https://github.com/qiin2333/moonlight-android</a><br>3.1.5 Moonlight 安卓威力加强版下载地址<br><a target="_blank" rel="noopener" href="https://github.com/qiin2333/moonlight-android/releases/tag/shortcut">https://github.com/qiin2333/moonlight-android/releases/tag/shortcut</a><br>3.2 Sunshine<br>3.2.1 Sunshine 基地版项目地址<br><a target="_blank" rel="noopener" href="https://github.com/qiin2333/Sunshine-Foundation">https://github.com/qiin2333/Sunshine-Foundation</a><br>3.2.2 Sunshine 基地版下载地址<br><a target="_blank" rel="noopener" href="https://github.com/qiin2333/Sunshine-Foundation/releases/">https://github.com/qiin2333/Sunshine-Foundation/releases/</a><br>3.2.3 Sunshine 基地版官方教程<br><a target="_blank" rel="noopener" href="https://docs.qq.com/aio/DSGdQc3htbFJjSFdO?p=DXpTjzl2kZwBjN7jlRMkRJ">https://docs.qq.com/aio/DSGdQc3htbFJjSFdO?p=DXpTjzl2kZwBjN7jlRMkRJ</a><br>3.3 公网串流<br>3.3.1 IPv6连接测试<br><a target="_blank" rel="noopener" href="https://ipv6-test.netcologne.de/">https://ipv6-test.netcologne.de/</a><br>3.3.2 本机IPv6地址<br><a target="_blank" rel="noopener" href="https://6.ipw.cn/">https://6.ipw.cn/</a><br>3.3.3 Lucky项目地址<br><a target="_blank" rel="noopener" href="https://github.com/gdy666/lucky">https://github.com/gdy666/lucky</a><br>3.3.5 Lucky下载地址<br><a target="_blank" rel="noopener" href="https://github.com/gdy666/lucky/releases/download/v2.14.0/lucky_2.14.0_Windows_x86_64.tar.gz">https://github.com/gdy666/lucky/releases/download/v2.14.0/lucky_2.14.0_Windows_x86_64.tar.gz</a> </p>
+</blockquote>
+<h2 id="服务端配置-安装并配置Sunshine"><a href="#服务端配置-安装并配置Sunshine" class="headerlink" title="服务端配置-安装并配置Sunshine"></a>服务端配置-安装并配置Sunshine</h2><p><strong>安装</strong>：Sunshine请安装在C盘默认路径，否则会导致部分功能失效。<br><strong>设置中文</strong>：Configuration——General——Locale——简体中文——保存应用，关闭Sunshine再重新打开即可切换至中文。<br>配置——Audio&#x2F;Video——适配器名称选择你的独立显卡。<br>输出显示器指定——就是要用虚拟显示器~。<br>串流时显示器组合状态设定——禁用其他显示器，只启用指定显示器。<br>在虚拟显示器支持分辨率中添加平板或手机的分辨率，添加好后点击保存应用。<br>配置——Network——启用UPnP。<br>IP 地址族——IPv4+IPv6。<br>允许的Web UI访问来源——任何人都可以访问Web UI。<br>禁用公网加密模式——保存应用。</p>
+<h2 id="客户端配置-安装并配置Moonlight"><a href="#客户端配置-安装并配置Moonlight" class="headerlink" title="客户端配置-安装并配置Moonlight"></a>客户端配置-安装并配置Moonlight</h2><p>安装链接中对应的版本的Moonlight即可，在同一局域网下用服务端ip连接。</p>
+<h2 id="光猫及路由器配置"><a href="#光猫及路由器配置" class="headerlink" title="光猫及路由器配置"></a>光猫及路由器配置</h2><p>一般来说，光猫的默认配置为路由器模式，不会给下游设备分配IPv6公网地址（一般家庭宽带分配的是一个IPv6地址段，可以给下游设备使用），因此需要将光猫改为桥接模式，将路由功能交由下游路由器，在下游路由器中开启Native模式的IPv6即可给局域网中设备分配公网IPv6地址。</p>
+<p>如果是老光猫，切换桥接模式一般是较容易的，谷歌光猫的型号就能找到教程，基本流程都是获取光猫的超级账号，使用超级账号登录，记录并删除原有route模式连接，创建新的Bridge连接。如果是新光猫，一般都使用了动态加密，需要联系宽带的装维人员获取。</p>
+<blockquote>
+<p>电信超级账号：telecomadmin 超级密码：nE7jA%m或admintelecom<br>移动超级账号：CMCCAdmin 超级密码：aDmH%MdA<br>联通超级账号：超级管理员或CUAdmin 超级密码：CUAdmin</p>
+</blockquote>
+<h2 id="内网穿透配置-Lucy配置"><a href="#内网穿透配置-Lucy配置" class="headerlink" title="内网穿透配置-Lucy配置"></a>内网穿透配置-Lucy配置</h2><p>光猫和路由器配置成功后，可以通过 <a target="_blank" rel="noopener" href="https://6.ipw.cn/">https://6.ipw.cn/</a> 获取本机IPv6地址，此时可以先尝试在客户端用移动网络使用:[IPv6地址]连接服务端测试连通性，无问题则可以开始配置IPv6的动态域名解析。</p>
+<p>买一个域名，推荐namesilo上买，然后用cloudflare管理域名。在cloudflare中创建一个API令牌（可以参考<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2485895">lucky实现动态DDNS域名解析 + https安全访问教程</a>），然后在Lucy客户端中设置任务自动解析IPv6地址到域名即可使用域名串流。</p>
+<h2 id="遇到的问题及解决方法"><a href="#遇到的问题及解决方法" class="headerlink" title="遇到的问题及解决方法"></a>遇到的问题及解决方法</h2><h3 id="使用6-ipw-cn获取的ipv6公网地址不正确"><a href="#使用6-ipw-cn获取的ipv6公网地址不正确" class="headerlink" title="使用6.ipw.cn获取的ipv6公网地址不正确"></a>使用6.ipw.cn获取的ipv6公网地址不正确</h3><p>主路由是mac mini M2使用openwrt桥接光猫拨号上网，openclash全局接管流量分流并重定向到Adguardhome做dns解析，在openwrt中可以看到网络中的设备正常获取到公网ipv6地址，ipv6网址测试也有ipv6地址，但使用从6.ipw.cn获取的ipv6地址串流电脑失败，提示端口未开放，但测试电脑相关端口均开放。</p>
+<p>解决：从openwrt和电脑的网卡地址中获取的公网ipv6地址与6.ipw.cn不一致，使用电脑网卡获取的ipv6公网地址成功串流到电脑</p>
+<p>原因：由于openclash全局接管了流量，导致6.ipw.cn最终由主路由代理访问，得到的是主路由的公网ipv6地址</p>
+<h3 id="lucky获取的ipv6地址不正确"><a href="#lucky获取的ipv6地址不正确" class="headerlink" title="lucky获取的ipv6地址不正确"></a>lucky获取的ipv6地址不正确</h3><p>lucky获取的是主路由的ipv6地址</p>
+<p>解决：使用通过网卡获取，使用正则表达式手动选择公网ip（^2409）即可正确获取ipv6地址</p>
+<p>原因：lucky默认通过网址获取，而发往网址的流量均被主路由代理</p>
 
                 
               </div>
@@ -311,7 +309,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%9B%BE/" class="print-no-link">#图</a>
+        <a href="/tags/tips%EF%BC%8C%E4%B8%B2%E6%B5%81%EF%BC%8C/" class="print-no-link">#tips，串流，</a>
       
     </div>
   
@@ -323,8 +321,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>pic</div>
-      <div>http://lnte39.github.io/2025/06/29/pic-1/</div>
+      <div>moonlight+sunshine+lucky实现公网串流</div>
+      <div>http://lnte39.github.io/2025/06/29/moonlight-sunshine-lucky实现公网串流/</div>
     </div>
     <div class="license-meta">
       
@@ -368,18 +366,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/06/29/moonlight-sunshine-lucky%E5%AE%9E%E7%8E%B0%E5%85%AC%E7%BD%91%E4%B8%B2%E6%B5%81/" title="moonlight+sunshine+lucky实现公网串流">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">moonlight+sunshine+lucky实现公网串流</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/06/28/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9APHP-mysql-2021%E7%95%99%E6%A1%A3/" title="学习笔记：PHP-mysql-2021留档">
-                        <span class="hidden-mobile">学习笔记：PHP-mysql-2021留档</span>
+                      <a href="/2025/06/29/pic-1/" title="pic">
+                        <span class="hidden-mobile">pic</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
